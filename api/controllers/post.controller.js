@@ -49,3 +49,13 @@ exports.deletePost = async (req, res) => {
     res.status(500).json(error)
   }
 }
+
+exports.getPostByUser = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.userId).populate('post')
+
+    res.status(200).json({ msg: 'Posts found correctly', user })
+  } catch (err) {
+    res.status(400).json(err)
+  }
+}

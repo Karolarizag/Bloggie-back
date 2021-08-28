@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 exports.login = (req, res) => {
-  console.log('nsdlkjslkd')
   userModel
     .findOne({ email: req.body.email })
     .then(user => {

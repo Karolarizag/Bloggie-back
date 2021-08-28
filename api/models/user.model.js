@@ -12,7 +12,11 @@ const userSchema = new mongoose.Schema({
   },
   birthdate: Date,
   role: String,
-  usersfollowed: [{
+  followedusers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  }],
+  followers: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   }],
