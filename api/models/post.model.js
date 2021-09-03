@@ -19,7 +19,8 @@ const postSchema = new mongoose.Schema({
   likes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  }]
+  }],
+  category: String
 })
 
 exports.postModel = mongoose.model('post', postSchema)

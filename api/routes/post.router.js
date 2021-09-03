@@ -5,12 +5,14 @@ const {
   createPost,
   updatePost,
   deletePost,
-  getPostByUser
+  getPostByUser,
+  getPostByCategory
 } = require('../controllers/post.controller')
 
 const { checkAuth } = require('../../utils/index')
 
 router 
+.get('/category', getPostByCategory)
   .get('/:postId', getPost)
   .get('/user/:userId', getPostByUser)
   .post('/', checkAuth, createPost)

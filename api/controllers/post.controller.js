@@ -59,3 +59,14 @@ exports.getPostByUser = async (req, res) => {
     res.status(400).json(err)
   }
 }
+
+exports.getPostByCategory = async (req, res) => {
+  try {
+    const category = req.body.category
+    const posts = await postModel.find({category: category})
+
+    res.status(200).json({ msg: `Post by category ${category}`, posts})
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}
