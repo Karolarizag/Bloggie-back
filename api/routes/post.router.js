@@ -6,16 +6,18 @@ const {
   updatePost,
   deletePost,
   getPostByUser,
-  getPostByCategory
+  getPostByCategory,
+  getAllPosts
 } = require('../controllers/post.controller')
 
-const { checkAuth } = require('../../utils/index')
+const { checkAuth } = require('../middlewares/index')
 
 router 
-.get('/category', getPostByCategory)
+  .get('/', getAllPosts)
   .get('/:postId', getPost)
   .get('/user/:userId', getPostByUser)
   .post('/', checkAuth, createPost)
+  .post('/category', getPostByCategory)
   .put('/:postId', checkAuth, updatePost)
   .delete('/:postId', checkAuth, deletePost)
 

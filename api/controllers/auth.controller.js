@@ -30,18 +30,18 @@ exports.login = (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.status(500).json({ error: 'Error' })
+      res.status(500).json({ error: 'Error iniciando sesión' })
     })
 }
 
 exports.signUp = (req, res) => {
-  const hashedPwd = bcrypt.hashSync(req.body.password, 10)
+  // const hashedPwd = bcrypt.hashSync(req.body.password, 10)
 
   userModel
     .create({
       name: req.body.name,
       username: req.body.username,
-      password: hashedPwd,
+      password: req.body.password,
       email: req.body.email,
       birthdate: req.body.dateofbirth,
       role: req.body.role,
@@ -63,6 +63,6 @@ exports.signUp = (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.status(400).json({ error: 'Error' })
+      res.status(400).json(err)
     })
 }

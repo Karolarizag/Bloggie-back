@@ -63,10 +63,19 @@ exports.getPostByUser = async (req, res) => {
 exports.getPostByCategory = async (req, res) => {
   try {
     const category = req.body.category
-    const posts = await postModel.find({category: category})
+    const posts = await postModel.find({category: category}).populate('creator')
 
-    res.status(200).json({ msg: `Post by category ${category}`, posts})
+    res.status(200).json( posts)
   } catch (err) {
     res.status(404).json(err)
+  }
+}
+
+exports.getAllPosts = async (req, res) => {
+  try {
+    const posts = await postModel.find().populate('creator')
+    res.status(200).json(posts)
+  } catch (err) {
+    res.status(500).json(err)
   }
 }

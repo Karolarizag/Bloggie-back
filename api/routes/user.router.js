@@ -7,7 +7,7 @@ const {
   feed
 } = require('../controllers/user.controller')
 
-const { checkAuth } = require('../../utils/index')
+const { checkAuth } = require('../middlewares/index')
 
 const router = require('express').Router()
 

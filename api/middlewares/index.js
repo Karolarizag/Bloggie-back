@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { userModel } = require('../api/models/user.model')
+const { userModel } = require('../models/user.model')
 
 exports.checkAuth = (req, res, next) => {
   jwt.verify(req.headers.token, process.env.SECRET, (err, token) => {
@@ -31,7 +31,7 @@ exports.isCreator = (req, res, next) => {
   res.locals.user.typeofuser === 'Admin') {
     next()
   } else {
-    res.status(400).json({ err: 'User is not creator' })
+    res.status(401).json({ err: 'User is not creator' })
   }
 }
 
@@ -40,7 +40,7 @@ exports.isModerator = (req, res, next) => {
   res.locals.user.typeofuser === 'Admin') {
     next()
   } else {
-    res.status(400).json({ err: 'User is not a moderator' })
+    res.status(401).json({ err: 'User is not a moderator' })
   }
 }
 
@@ -48,7 +48,7 @@ exports.isAdmin = (req, res, next) => {
   if (res.locals.user.typeofuser === 'Admin') {
     next()
   } else {
-    res.status(400).json({ err: 'User is not a admin' })
+    res.status(401).json({ err: 'User is not a admin' })
   }
 }
 
@@ -58,6 +58,6 @@ exports.isSubscriber = (req, res, next) => {
     console.log('User is subcribed to channel')
     next()
   } else {
-    res.status(400).json({ err: 'User is not a subscriber to this channel' })
+    res.status(401).json({ err: 'User is not a subscriber to this channel' })
   }
 }

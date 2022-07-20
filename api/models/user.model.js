@@ -5,12 +5,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   name: String,
   lastname: String,
-  email: {
-    unique: [true, 'Este email ya existe, intenta con otro'],
-    required: [true, 'Por favor ingrese un email válido'],
-    type: String
-  },
-  birthdate: Date,
+  email: String,
+  birthdate: String,
   role: String,
   followedusers: [{
     type: mongoose.Schema.Types.ObjectId,
