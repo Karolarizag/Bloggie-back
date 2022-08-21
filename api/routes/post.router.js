@@ -17,7 +17,7 @@ router
   .get('/:postId', getPost)
   .get('/user/:userId', getPostByUser)
   .post('/', checkAuth, createPost)
-  .post('/category', getPostByCategory)
+  .post('/category', getPostByCategory) // por qué post y no get x params ??
   .put('/:postId', checkAuth, updatePost)
   .delete('/:postId', checkAuth, deletePost)
 

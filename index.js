@@ -15,7 +15,7 @@ api
   .use(morgan('dev'))
   .use(express.json())
   .use('/api', router)
-  .listen(process.env.PORT || 3000, err => {
+  .listen(process.env.PORT || 8080, err => {
     if (err) { throw new Error(err) }
 
     mongoose.connect(process.env.MONGO_URL,
